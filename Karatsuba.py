@@ -21,8 +21,8 @@ def karatsuba(x1, x2):
         s3 = karatsuba(a+b,c+d)
         s4 = s3-s2-s1 #ad+bc
 
-        s1 = int(str(s1)+"0"*len(a)*2)
-        s4 = int(str(s4)+"0"*len(a))
+        s1 = int(str(s1)+"0"*2*i)
+        s4 = int(str(s4)+"0"*i)
         product = s1 + s2 + s4
         
         return product
