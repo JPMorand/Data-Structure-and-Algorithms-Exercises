@@ -1,30 +1,39 @@
 def karatsuba(x1, x2):
-    if len(x1)==1 and len(x2)==1:
+    """This function multiplies two integers using the karatsuba algorithm"""
+    x1 = str(x1)
+    x2 = str(x2)
+    
+    if len(x1)==1 and len(x2)==1: #base case
         product = int(x1)*int(x2)
         return product
-    else:
+    
+    else: #recursive solution
         x1, x2 = normalize_len(x1, x2)
-        a = x1[:len(x1)//2]
-        b = x1[len(x1)//2:]
-        c = x2[:len(x2)//2]
-        d = x2[len(x2)//2:]
+        i = len(x1)//2
+
+        a = int(x1[:i])
+        b = int(x1[i:])
+        c = int(x2[:i])
+        d = int(x2[i:])
         
         s1 = karatsuba(a,c)
         s2 = karatsuba(b,d)
-        ab = str(int(a)+int(b))
-        cd = str(int(c)+int(d))
-        s3 = karatsuba(ab,cd)
+        s3 = karatsuba(a+b,c+d)
         s4 = s3-s2-s1 #ad+bc
-        
-        product = s1*10**(len(a)*2) + s2 + s4*10**(len(a))
+
+        s1 = int(str(s1)+"0"*len(a)*2)
+        s4 = int(str(s4)+"0"*len(a))
+        product = s1 + s2 + s4
         
         return product
 
 def normalize_len(x1, x2):
+    '''This function equalizes the length of x1 and x2,
+        and turns odd lenghts into even through 0 padding'''
     if len(x1)>len(x2):
-        if len(x1)% 2 == 0:
+        if len(x1)% 2 == 0: #even
             x2 = x2.zfill(len(x1))
-        else:
+        else: #odd
             x2 = x2.zfill(len(x1)+1)
             x1 = x1.zfill(len(x1)+1)
 
