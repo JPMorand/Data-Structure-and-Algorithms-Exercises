@@ -44,7 +44,7 @@ def x_inv_count(list1, list2):
 
 '''
 This snipet of code reads from a text file in which each line contains a number.
-The number of inversions in this sequence of numbers is countes'''
+The number of inversions in this sequence of numbers is counted'''
 sum_inv = 0
 digit_list=[]
 f = open("C:/Users/joaop/Desktop/IntegerArray.txt", "r")
